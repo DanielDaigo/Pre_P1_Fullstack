@@ -16,11 +16,12 @@ O projeto contempla a arquitetura MTV (Model-Template-View), persistência relac
 
 ## 🚀 Funcionalidades
 
-- [x] Conexão com banco PostgreSQL isolada por variáveis de ambiente (`python-dotenv`)
-- [x] Modelagem de dados com o model `Livro` e migrações automatizadas
+- [x] Conexão com banco PostgreSQL isolada por variáveis de ambiente (`prep1_db` na porta `5433`)
+- [x] Modelagem de dados atualizada: model `Livro` com os novos campos `tipo_acervo` e `categoria` com opções predefinidas
 - [x] Painel de gestão integrado via Django Admin
-- [x] Listagem dinâmica de livros persistidos no banco de dados
-- [x] Cadastro de novos títulos com validação e integridade via `ModelForm`
+- [x] Listagem dinâmica de livros persistidos no banco de dados com exibição de tipo e categoria
+- [x] Filtros Dinâmicos: Busca textual por nome e filtros em cascata por `tipo_acervo` e `categoria` na view de listagem
+- [x] Cadastro de novos títulos com validação e integridade via `ModelForm` (incluindo os novos campos)
 - [x] Proteção em formulários contra ataques CSRF (`{% csrf_token %}`)
 - [x] Layout componentizado com herança de templates (`base.html`) e folha de estilos personalizada (`estilo.css`)
 - [ ] Atualização/edição de livros existentes (Aula 6)
@@ -107,11 +108,11 @@ copy .env.example .env
 O arquivo `.env` gerado virá pré-configurado para o ambiente de desenvolvimento:
 
 ```env
-DB_NAME=biblioteca_db
+DB_NAME=prep1_db
 DB_USER=postgres
 DB_PASSWORD=senha
 DB_HOST=localhost
-DB_PORT=5432
+DB_PORT=5433
 SECRET_KEY=django-insecure-chave-secreta-exemplo
 ```
 
