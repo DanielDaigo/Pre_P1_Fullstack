@@ -4,6 +4,11 @@ from .forms import LivroForm
 
 def lista_livros(request):
     livros = Livro.objects.all()
+    
+    nome = request.GET.get('nome')
+    if nome:
+        livros = livros.filter(titulo__icontains=nome)
+        
     return render(
         request, 
         'acervo/lista.html', 
