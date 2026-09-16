@@ -1,15 +1,15 @@
 services:
   db:
     image: postgres:16
-    container_name: postgres-biblioteca
+    container_name: postgres-prep1
     restart: "no"
     environment:
       POSTGRES_PASSWORD: senha
-      POSTGRES_DB: biblioteca_db
+      POSTGRES_DB: prep1_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
-      - pg_aula4_data:/var/lib/postgresql/data
+      - pg_prep1_data:/var/lib/postgresql/data
 
 volumes:
-  pg_aula4_data:
+  pg_prep1_data:
