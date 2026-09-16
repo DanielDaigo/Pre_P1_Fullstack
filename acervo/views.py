@@ -6,13 +6,26 @@ def lista_livros(request):
     livros = Livro.objects.all()
     
     nome = request.GET.get('nome')
+    tipo_acervo = request.GET.get('tipo_acervo')
+    categoria = request.GET.get('categoria')
+    
     if nome:
         livros = livros.filter(titulo__icontains=nome)
+    if tipo_acervo:
+        livros = livros.filter(tipo_acervo=tipo_acervo)
+    if categoria:
+        livros = livros.filter(categoria=categoria)
+        
+    context = {
+        'livros': livros,
+        'tipos_acervo': Livro.TIPO_ACERVO_CHOICES,
+        'categorias': Livro.CATEGORIA_CHOICES,
+    }
         
     return render(
         request, 
         'acervo/lista.html', 
-        {'livros': livros}
+        context
     )
 
 def novo_livro(request):
