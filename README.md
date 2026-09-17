@@ -174,7 +174,7 @@ Acesse a aplicação no navegador:
 | [`/livros/novo/`](http://127.0.0.1:8000/livros/novo/) | Formulário para cadastro e validação de novos livros              |
 | `/livros/<id>/editar/`                                | Rota para edição e atualização dos dados de um livro existente    |
 | `/livros/<id>/excluir/`                               | Rota para exclusão de um livro (com tela de confirmação)          |
-| [`/admin/`](http://127.0.0.1:8000/admin/)             | Painel administrativo do Django para controle total dos registros |
+| [`/admin/`](http://127.0.0.1:8000/admin/)             | Painel administrativo do Django (Acesso direto via URL)           |
 
 ---
 

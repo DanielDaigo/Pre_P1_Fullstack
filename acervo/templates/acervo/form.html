@@ -7,7 +7,22 @@
   <form method="post">
     {% csrf_token %}
     <div class="form-container">
-      {{ form.as_p }}
+      {% for field in form %}
+        {% if field.name == 'disponivel' %}
+          <div class="checkbox-container">
+            {{ field }}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          </div>
+        {% else %}
+          <p>
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <span class="error">{{ field.errors.0 }}</span>
+            {% endif %}
+          </p>
+        {% endif %}
+      {% endfor %}
     </div>
     <button type="submit" class="btn">Salvar Livro</button>
     <a
