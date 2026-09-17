@@ -4,28 +4,29 @@
 [![Django](https://img.shields.io/badge/Django-6.1.1-092E20?logo=django)](https://www.djangoproject.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker)](https://www.docker.com/)
-[![Status](<https://img.shields.io/badge/Status-CRUD%20Parcial%20(Aulas%204%20e%205)-yellow>)]()
+[![Status](<https://img.shields.io/badge/Status-CRUD%20Completo-success>)]()
 
 Aplicação web desenvolvida com **Django** e **PostgreSQL** para gerenciamento de um acervo de livros, baseada nas Aulas 4 e 5 da disciplina de Laboratório de Programação Full Stack.
 
 O projeto contempla a arquitetura MTV (Model-Template-View), persistência relacional com Django ORM, painel administrativo nativo com Django Admin, formulários com validação via `ModelForm`, herança de templates e proteção contra CSRF.
 
-> **Status atual:** Operações de **Listagem (Read)** e **Cadastro (Create)** implementadas e funcionais. As operações de **Atualização (Update)** e **Exclusão (Delete)** serão adicionadas na Aula 6.
+> **Status atual:** Operações de CRUD completas (Listagem, Cadastro, Atualização, Exclusão), com status de disponibilidade e nova interface visual modernizada.
 
 ---
 
 ## 🚀 Funcionalidades
 
 - [x] Conexão com banco PostgreSQL isolada por variáveis de ambiente (`prep1_db` na porta `5433`)
-- [x] Modelagem de dados atualizada: model `Livro` com os novos campos `tipo_acervo` e `categoria` com opções predefinidas
+- [x] Modelagem de dados atualizada: model `Livro` com os novos campos `tipo_acervo`, `categoria` e `disponivel`
 - [x] Painel de gestão integrado via Django Admin
-- [x] Listagem dinâmica de livros persistidos no banco de dados com exibição de tipo e categoria
+- [x] Listagem dinâmica de livros persistidos no banco de dados com exibição de tipo, categoria e status visual
 - [x] Filtros Dinâmicos: Busca textual por nome e filtros em cascata por `tipo_acervo` e `categoria` na view de listagem
 - [x] Cadastro de novos títulos com validação e integridade via `ModelForm` (incluindo os novos campos)
+- [x] Atualização/edição de livros existentes reaproveitando o `LivroForm`
+- [x] Exclusão segura de livros com template de confirmação
 - [x] Proteção em formulários contra ataques CSRF (`{% csrf_token %}`)
 - [x] Layout componentizado com herança de templates (`base.html`) e folha de estilos personalizada (`estilo.css`)
-- [ ] Atualização/edição de livros existentes (Aula 6)
-- [ ] Exclusão de livros (Aula 6)
+- [x] Nova Interface Visual (Home Dashboard, Cores Vibrantes, Micro-animações e Glassmorphism)
 - [ ] Testes unitários e de integração
 - [ ] Configurações otimizadas para deploy em produção
 
@@ -168,8 +169,11 @@ Acesse a aplicação no navegador:
 
 | Rota                                                  | Descrição                                                         |
 | ----------------------------------------------------- | ----------------------------------------------------------------- |
+| [`/`](http://127.0.0.1:8000/)                         | Nova página inicial (Home) com dashboard de acesso rápido         |
 | [`/livros/`](http://127.0.0.1:8000/livros/)           | Exibe a listagem completa dos livros cadastrados no banco         |
 | [`/livros/novo/`](http://127.0.0.1:8000/livros/novo/) | Formulário para cadastro e validação de novos livros              |
+| `/livros/<id>/editar/`                                | Rota para edição e atualização dos dados de um livro existente    |
+| `/livros/<id>/excluir/`                               | Rota para exclusão de um livro (com tela de confirmação)          |
 | [`/admin/`](http://127.0.0.1:8000/admin/)             | Painel administrativo do Django para controle total dos registros |
 
 ---

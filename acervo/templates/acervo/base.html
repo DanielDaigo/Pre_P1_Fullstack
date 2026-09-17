@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
     {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'acervo/estilo.css' %}">
 </head>
 <body>
-    <header>
-        <h2>Sistema de Biblioteca</h2>
+    <header class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">📚 Sistema de Biblioteca</a>
+        </div>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'lista' %}">Acervo</a>
+            <a href="{% url 'novo_livro' %}">Novo Livro</a>
+            <a href="/admin/">Admin</a>
+        </nav>
     </header>
 
     <main>

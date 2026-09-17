@@ -1,0 +1,22 @@
+{% extends 'acervo/base.html' %} 
+
+{% block conteudo %}
+<div class="card">
+  <div class="card-header">
+    <h1>Confirmar Exclusão</h1>
+  </div>
+
+  <div style="text-align: center; padding: 2rem;">
+    <h2 style="margin-bottom: 1rem; color: var(--text-main);">Tem certeza que deseja excluir este livro?</h2>
+    <p style="font-size: 1.25rem; color: var(--danger); font-weight: bold; margin-bottom: 2rem;">
+      "{{ livro.titulo }}"
+    </p>
+
+    <form method="post" style="display: flex; gap: 1rem; justify-content: center;">
+      {% csrf_token %}
+      <a href="{% url 'lista' %}" class="btn">Cancelar</a>
+      <button type="submit" class="btn btn-danger">Sim, Excluir Livro</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

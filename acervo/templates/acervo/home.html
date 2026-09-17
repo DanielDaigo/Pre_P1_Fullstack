@@ -1,0 +1,28 @@
+{% extends 'acervo/base.html' %} 
+
+{% block conteudo %}
+<div class="home-hero">
+    <h1>Bem-vindo ao Sistema de Biblioteca</h1>
+    <p>Gerencie o acervo de livros de forma rápida e eficiente. Escolha uma das opções abaixo para começar.</p>
+</div>
+
+<div class="cards-grid">
+    <a href="{% url 'lista' %}" class="dashboard-card">
+        <div class="card-icon">📚</div>
+        <h3>Ver Acervo</h3>
+        <p>Acesse a listagem completa de livros, pesquise e filtre por categorias.</p>
+    </a>
+
+    <a href="{% url 'novo_livro' %}" class="dashboard-card">
+        <div class="card-icon">➕</div>
+        <h3>Novo Livro</h3>
+        <p>Adicione rapidamente um novo título físico ou digital ao acervo.</p>
+    </a>
+
+    <a href="/admin/" class="dashboard-card">
+        <div class="card-icon">⚙️</div>
+        <h3>Painel Admin</h3>
+        <p>Acesso restrito para administração de usuários e configurações.</p>
+    </a>
+</div>
+{% endblock %}

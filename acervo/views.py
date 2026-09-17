@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Livro
 from .forms import LivroForm
+
+def home(request):
+    return render(request, 'acervo/home.html')
 
 def lista_livros(request):
     livros = Livro.objects.all()
@@ -32,9 +35,29 @@ def novo_livro(request):
     if request.method == 'POST':
         form = LivroForm(request.POST)
         if form.is_valid():
-            form.save()          # grava no banco PostgreSQL
-            return redirect('lista')  # redireciona de volta para a lista
+            form.save()
+            return redirect('lista')
     else:
-        form = LivroForm()       # requisição GET: formulário em branco
+        form = LivroForm()
     
-    return render(request, 'acervo/form.html', {'form': form})
+    return render(request, 'acervo/form.html', {'form': form, 'acao': 'Cadastrar'})
+
+def editar_livro(request, pk):
+    livro = get_object_or_404(Livro, pk=pk)
+    if request.method == 'POST':
+        form = LivroForm(request.POST, instance=livro)
+        if form.is_valid():
+            form.save()
+            return redirect('lista')
+    else:
+        form = LivroForm(instance=livro)
+    
+    return render(request, 'acervo/form.html', {'form': form, 'acao': 'Editar'})
+
+def excluir_livro(request, pk):
+    livro = get_object_or_404(Livro, pk=pk)
+    if request.method == 'POST':
+        livro.delete()
+        return redirect('lista')
+    
+    return render(request, 'acervo/excluir.html', {'livro': livro})
