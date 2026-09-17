@@ -63,8 +63,8 @@ Antes de iniciar a instalação, certifique-se de ter instalado em seu computado
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/DanielDaigo/Projeto_Fullstack_6P.git
-cd Projeto_Fullstack_6P
+git clone https://github.com/DanielDaigo/Pre_P1_Fullstack.git
+cd Pre_P1_Fullstack
 ```
 
 ### 2. Crie e ative o ambiente virtual
